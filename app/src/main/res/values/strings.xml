@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Cardfolio</string>
+    
+    <string name="track_expenses">Track Expenses</string>
+    <string name="track_expenses_subtitle">Monitor your spending and browse through available deals.</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_credentials">Enter your credentials to continue</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="recover_username_password">Recover Username / Password</string>
+    <string name="copyright_text">2024 Visa. All rights reserved</string>
+    <string name="spending_summary">Spending Summary</string>
+
+    
 </resources>
