@@ -12,10 +12,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.visa.cardfolio.MainViewModel
 import com.visa.cardfolio.R
+import com.visa.cardfolio.scenes.navigation.Screen
+import com.visa.cardfolio.scenes.utils.PrimaryButton
+import com.visa.cardfolio.scenes.utils.SecondaryButton
+import com.visa.cardfolio.scenes.utils.SubTitleText
+import com.visa.cardfolio.scenes.utils.TitleText
 
 @Composable
-fun LaunchScene() {
+fun LaunchScene(
+    navController: NavController,
+    viewModel: MainViewModel
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -29,11 +39,10 @@ fun LaunchScene() {
         SubTitleText(text = stringResource(id = R.string.track_expenses_subtitle))
         Spacer(modifier = Modifier.height(50.dp))
         PrimaryButton(text = stringResource(id = R.string.log_in)) {
+            navController.navigate(Screen.LoginScreen.route)
         }
-        Spacer(modifier = Modifier.height(10.dp))
-        SecondaryButton(text = stringResource(id = R.string.sign_up)) {
-            
-        }
+        Spacer(modifier = Modifier.height(15.dp))
+        SecondaryButton(text = stringResource(id = R.string.sign_up)) {}
     }
 }
 

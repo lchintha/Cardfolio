@@ -1,4 +1,4 @@
-package com.visa.cardfolio.scenes
+package com.visa.cardfolio.scenes.utils
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,33 +8,45 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.visa.cardfolio.ui.theme.robotoCondensed
 
 
 @Composable
 fun TitleText(text: String) {
-    Text(
+    BasicText(
         text = text,
-        modifier = Modifier
-            .fillMaxWidth(),
-        fontFamily = robotoCondensed,
-        fontWeight = FontWeight.Normal,
-        fontSize = 80.sp,
-        color = Color(0xFF033342)
+        modifier = Modifier.fillMaxWidth(),
+        fontSize = 80.sp
     )
 }
 
 @Composable
 fun SubTitleText(text: String) {
+    BasicText(
+        text = text,
+        modifier = Modifier.fillMaxWidth(),
+        fontWeight = FontWeight.Light
+    )
+}
+
+@Composable
+fun BasicText(
+    text: String,
+    modifier: Modifier = Modifier,
+    fontWeight: FontWeight = FontWeight.Normal,
+    color: Color = Color(0xFF033342),
+    fontSize: TextUnit = 25.sp,
+    onClick: () -> Unit = {}
+) {
     Text(
         text = text,
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = modifier,
         fontFamily = robotoCondensed,
-        fontWeight = FontWeight.Light,
-        fontSize = 25.sp,
-        color = Color(0xFF033342)
+        fontWeight = fontWeight,
+        fontSize = fontSize,
+        color = color
     )
 }
 
