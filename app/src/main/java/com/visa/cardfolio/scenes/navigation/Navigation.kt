@@ -1,8 +1,9 @@
 package com.visa.cardfolio.scenes.navigation
 
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -20,13 +21,19 @@ fun Navigation(
 ) {
     AnimatedNavHost(
         navController = navController,
-        startDestination = Screen.LaunchScreen.route,
-        enterTransition = { EnterTransition.None },
-        exitTransition = { ExitTransition.None },
-        popEnterTransition = { EnterTransition.None },
-        popExitTransition = { ExitTransition.None }
+        startDestination = Screen.LaunchScreen.route
     ) {
-        composable(route = Screen.LaunchScreen.route) {
+        composable(
+            route = Screen.LaunchScreen.route,
+            enterTransition = {
+                return@composable fadeIn(tween(1000))
+            },
+            exitTransition = {
+                return@composable slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start, tween(700)
+                )
+            }
+        ) {
             Column {
                 LaunchScene(
                     navController,
@@ -34,13 +41,23 @@ fun Navigation(
                 )
             }
         }
-        composable(route = Screen.LoginScreen.route) {
+        composable(
+            route = Screen.LoginScreen.route,
+            enterTransition = {
+                return@composable slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start, tween(700)
+                )
+            },
+            exitTransition = {
+                return@composable slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(700)
+                )
+            }
+        ) {
             LoginScene(
                 navController,
                 viewModel
             )
         }
-
     }
-
 }
